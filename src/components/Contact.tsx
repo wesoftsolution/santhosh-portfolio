@@ -71,8 +71,21 @@ export default function Contact() {
                                         <Mail size={24} />
                                     </div>
                                     <div className="min-w-0 flex-1">
-                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">Email / Enquiry</p>
+                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">Gmail / Official</p>
                                         <p className="font-bold text-sm text-foreground break-all">{bio.email}</p>
+                                    </div>
+                                </a>
+
+                                <a
+                                    href="mailto:santhoshsugumar_84@yahoo.com"
+                                    className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-background hover:border-purple-500/50 transition-all hover:translate-x-1 group shadow-sm"
+                                >
+                                    <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors shadow-inner">
+                                        <Mail size={24} />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">Yahoo Mail</p>
+                                        <p className="font-bold text-sm text-foreground break-all">santhoshsugumar_84@yahoo.com</p>
                                     </div>
                                 </a>
                             </div>
@@ -162,29 +175,16 @@ export default function Contact() {
                             className="relative z-10 space-y-6"
                             onSubmit={handleSubmit}
                         >
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Your Name</label>
-                                    <input
-                                        id="name"
-                                        name="name"
-                                        type="text"
-                                        required
-                                        placeholder="Santhosh. S"
-                                        className="w-full px-5 py-4 rounded-2xl border border-border bg-muted/30 focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium"
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Email Address</label>
-                                    <input
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        required
-                                        placeholder="santhosh@example.com"
-                                        className="w-full px-5 py-4 rounded-2xl border border-border bg-muted/30 focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium"
-                                    />
-                                </div>
+                            <div className="space-y-2">
+                                <label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Your Name</label>
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    required
+                                    placeholder="Santhosh. S"
+                                    className="w-full px-5 py-4 rounded-2xl border border-border bg-muted/30 focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium"
+                                />
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="subject" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Subject</label>
