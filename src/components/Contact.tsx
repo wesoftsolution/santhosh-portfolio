@@ -3,8 +3,53 @@
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Send, Linkedin, Github, Twitter, Facebook } from "lucide-react"
 import { bio } from "@/lib/data"
+import { useState } from "react"
 
 export default function Contact() {
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setIsSubmitting(true)
+        setSubmitStatus('idle')
+
+        const formData = new FormData(e.currentTarget)
+        const object: { [key: string]: any } = Object.fromEntries(formData)
+
+        // Use the Email from the data.ts or a default
+        object.subject = `New Portfolio Message from ${object.name}`
+        object.from_name = "Portfolio Contact Form"
+
+        // CRITICAL: Replace THIS_IS_A_PLACEHOLDER_KEY with the actual key from web3forms.com
+        object.access_key = "d6e3c54c-1d9c-4be6-a664-884814d42043" // Example structure, user needs to replace
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify(object)
+            })
+
+            const result = await response.json()
+            if (result.success) {
+                setSubmitStatus('success')
+                    ; (e.target as HTMLFormElement).reset()
+            } else {
+                setSubmitStatus('error')
+            }
+        } catch (error) {
+            setSubmitStatus('error')
+        } finally {
+            setIsSubmitting(false)
+            // Reset status after 5 seconds
+            setTimeout(() => setSubmitStatus('idle'), 5000)
+        }
+    }
+
     return (
         <section id="contact" className="py-20 bg-muted/30">
             <div className="container mx-auto px-4 md:px-6">
@@ -26,21 +71,8 @@ export default function Contact() {
                                         <Mail size={24} />
                                     </div>
                                     <div className="min-w-0 flex-1">
-                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">Gmail / Official</p>
+                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">Email / Enquiry</p>
                                         <p className="font-bold text-sm text-foreground break-all">{bio.email}</p>
-                                    </div>
-                                </a>
-
-                                <a
-                                    href="mailto:santhoshsugumar_84@yahoo.com"
-                                    className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-background hover:border-purple-500/50 transition-all hover:translate-x-1 group shadow-sm"
-                                >
-                                    <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors shadow-inner">
-                                        <Mail size={24} />
-                                    </div>
-                                    <div className="min-w-0 flex-1">
-                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">Yahoo Mail</p>
-                                        <p className="font-bold text-sm text-foreground break-all">santhoshsugumar_84@yahoo.com</p>
                                     </div>
                                 </a>
                             </div>
@@ -128,14 +160,7 @@ export default function Contact() {
 
                         <form
                             className="relative z-10 space-y-6"
-                            onSubmit={(e) => {
-                                e.preventDefault();
-                                const formData = new FormData(e.currentTarget);
-                                const name = formData.get('name');
-                                const subject = formData.get('subject');
-                                const message = formData.get('message');
-                                window.location.href = `mailto:${bio.email}?subject=${subject}&body=Name: ${name}%0D%0A%0D%0A${message}`;
-                            }}
+                            onSubmit={handleSubmit}
                         >
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
@@ -185,10 +210,26 @@ export default function Contact() {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full py-5 rounded-2xl bg-primary text-primary-foreground font-black text-lg flex items-center justify-center gap-3 hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 hover:-translate-y-1 active:scale-95 group"
+                                disabled={isSubmitting}
+                                className={`w-full py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all shadow-xl hover:-translate-y-1 active:scale-95 group ${submitStatus === 'success'
+                                    ? 'bg-green-500 text-white shadow-green-500/20'
+                                    : submitStatus === 'error'
+                                        ? 'bg-red-500 text-white shadow-red-500/20'
+                                        : 'bg-primary text-primary-foreground shadow-primary/20 hover:bg-primary/90'
+                                    }`}
                             >
-                                <Send size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                Send Message
+                                {isSubmitting ? (
+                                    <span className="animate-pulse">Sending...</span>
+                                ) : submitStatus === 'success' ? (
+                                    <>Sent Successfully! ✅</>
+                                ) : submitStatus === 'error' ? (
+                                    <>Failed to Send ❌</>
+                                ) : (
+                                    <>
+                                        <Send size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        Send Message
+                                    </>
+                                )}
                             </button>
                         </form>
                     </motion.div>
