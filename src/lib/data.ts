@@ -5,6 +5,7 @@ export const bio = {
   avatar: "/profile.jpg",
   email: "santhoshsugumar_84@yahoo.com",
   phone: "+91 86670 25228",
+  secondaryPhone: "+91 99440 82673",
   location: "Maraimalainagar, Chennai, India",
   summary: "Results-driven Senior Software Engineer with over 12 years of enterprise experience specializing in Python, Django, and high-scale ETL/Data Testing. Proven expertise in building robust backend systems, designing RESTful APIs, and implementing comprehensive data validation frameworks for global clients including HPE and major financial institutions. Passionate about delivering high-performance, scalable solutions through clean code and Agile methodologies.",
   linkedin: "https://linkedin.com/in/santhosh-sugumar", // Placeholder

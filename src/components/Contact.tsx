@@ -15,47 +15,66 @@ export default function Contact() {
                             I'm currently open to new opportunities as a Senior Python Developer or ETL Specialist. Whether you have a question or just want to connect, feel free to reach out.
                         </p>
 
-                        <div className="space-y-6">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-4">
+                            {/* Email Section */}
+                            <div className="flex flex-col gap-4">
                                 <a
                                     href={`mailto:${bio.email}`}
-                                    className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-background hover:border-primary/50 transition-colors group"
+                                    className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-background hover:border-primary/50 transition-all hover:translate-x-1 group shadow-sm"
                                 >
-                                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shadow-inner">
                                         <Mail size={24} />
                                     </div>
-                                    <div>
-                                        <p className="text-xs font-bold text-muted-foreground uppercase">Gmail / Official</p>
-                                        <p className="font-semibold text-sm truncate">{bio.email}</p>
+                                    <div className="min-w-0 flex-1">
+                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">Gmail / Official</p>
+                                        <p className="font-bold text-sm text-foreground break-all">{bio.email}</p>
                                     </div>
                                 </a>
 
                                 <a
-                                    href="mailto:santhosh_84@yahoo.com" // Based on typical Yahoo format or if they provided one
-                                    className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-background hover:border-primary/50 transition-colors group"
+                                    href="mailto:santhoshsugumar_84@yahoo.com"
+                                    className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-background hover:border-purple-500/50 transition-all hover:translate-x-1 group shadow-sm"
                                 >
-                                    <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                                    <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-colors shadow-inner">
                                         <Mail size={24} />
                                     </div>
-                                    <div>
-                                        <p className="text-xs font-bold text-muted-foreground uppercase">Yahoo Mail</p>
-                                        <p className="font-semibold text-sm truncate">santhoshsugumar_84@yahoo.com</p>
+                                    <div className="min-w-0 flex-1">
+                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">Yahoo Mail</p>
+                                        <p className="font-bold text-sm text-foreground break-all">santhoshsugumar_84@yahoo.com</p>
                                     </div>
                                 </a>
                             </div>
 
-                            <a
-                                href={`tel:${bio.phone.replace(/\s+/g, '')}`}
-                                className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-background hover:border-primary/50 transition-colors group"
-                            >
-                                <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                    <Phone size={24} />
-                                </div>
-                                <div>
-                                    <p className="text-xs font-bold text-muted-foreground uppercase">Phone</p>
-                                    <p className="font-semibold">{bio.phone}</p>
-                                </div>
-                            </a>
+                            {/* Phone Section */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <a
+                                    href={`tel:${bio.phone.replace(/\s+/g, "")}`}
+                                    className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-background hover:border-blue-500/50 transition-all hover:translate-x-1 group shadow-sm"
+                                >
+                                    <div className="p-3 rounded-xl bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors shadow-inner">
+                                        <Phone size={24} />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">Phone</p>
+                                        <p className="font-bold text-sm">{bio.phone}</p>
+                                    </div>
+                                </a>
+
+                                <a
+                                    href={`https://wa.me/919944082673?text=Hi%20Santhosh,%20I%20saw%20your%20portfolio...`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-4 p-5 rounded-2xl border border-border bg-background hover:border-green-500/50 transition-all hover:translate-x-1 group shadow-sm"
+                                >
+                                    <div className="p-3 rounded-xl bg-green-500/10 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-colors shadow-inner">
+                                        <Send size={24} />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-1">WhatsApp / Message</p>
+                                        <p className="font-bold text-sm">+91 99440 82673</p>
+                                    </div>
+                                </a>
+                            </div>
 
                             <div className="flex flex-wrap gap-4 pt-4">
                                 <a
@@ -63,7 +82,7 @@ export default function Contact() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="LinkedIn"
-                                    className="p-4 rounded-2xl border border-border bg-background hover:border-blue-600 transition-colors text-muted-foreground hover:text-blue-600"
+                                    className="p-4 rounded-2xl border border-border bg-background hover:bg-blue-600 hover:text-white transition-all hover:scale-110 shadow-sm"
                                 >
                                     <Linkedin size={24} />
                                 </a>
@@ -72,7 +91,7 @@ export default function Contact() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="GitHub"
-                                    className="p-4 rounded-2xl border border-border bg-background hover:border-foreground transition-colors text-muted-foreground hover:text-foreground"
+                                    className="p-4 rounded-2xl border border-border bg-background hover:bg-foreground hover:text-background transition-all hover:scale-110 shadow-sm"
                                 >
                                     <Github size={24} />
                                 </a>
@@ -81,7 +100,7 @@ export default function Contact() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Twitter / X"
-                                    className="p-4 rounded-2xl border border-border bg-background hover:border-sky-500 transition-colors text-muted-foreground hover:text-sky-500"
+                                    className="p-4 rounded-2xl border border-border bg-background hover:bg-sky-500 hover:text-white transition-all hover:scale-110 shadow-sm"
                                 >
                                     <Twitter size={24} />
                                 </a>
@@ -90,7 +109,7 @@ export default function Contact() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Facebook"
-                                    className="p-4 rounded-2xl border border-border bg-background hover:border-blue-700 transition-colors text-muted-foreground hover:text-blue-700"
+                                    className="p-4 rounded-2xl border border-border bg-background hover:bg-blue-700 hover:text-white transition-all hover:scale-110 shadow-sm"
                                 >
                                     <Facebook size={24} />
                                 </a>
@@ -102,52 +121,73 @@ export default function Contact() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="p-8 rounded-3xl bg-background border border-border shadow-sm"
+                        className="p-8 rounded-[2rem] bg-background border border-border shadow-2xl relative overflow-hidden"
                     >
-                        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                        {/* Decorative Background Element */}
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16" />
+
+                        <form
+                            className="relative z-10 space-y-6"
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                const formData = new FormData(e.currentTarget);
+                                const name = formData.get('name');
+                                const subject = formData.get('subject');
+                                const message = formData.get('message');
+                                window.location.href = `mailto:${bio.email}?subject=${subject}&body=Name: ${name}%0D%0A%0D%0A${message}`;
+                            }}
+                        >
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-semibold">Your Name</label>
+                                    <label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Your Name</label>
                                     <input
                                         id="name"
+                                        name="name"
                                         type="text"
-                                        placeholder="John Doe"
-                                        className="w-full px-4 py-3 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                        required
+                                        placeholder="Santhosh. S"
+                                        className="w-full px-5 py-4 rounded-2xl border border-border bg-muted/30 focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-semibold">Email Address</label>
+                                    <label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Email Address</label>
                                     <input
                                         id="email"
+                                        name="email"
                                         type="email"
-                                        placeholder="john@example.com"
-                                        className="w-full px-4 py-3 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                        required
+                                        placeholder="santhosh@example.com"
+                                        className="w-full px-5 py-4 rounded-2xl border border-border bg-muted/30 focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium"
                                     />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="subject" className="text-sm font-semibold">Subject</label>
+                                <label htmlFor="subject" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Subject</label>
                                 <input
                                     id="subject"
+                                    name="subject"
                                     type="text"
-                                    placeholder="Inquiry about Senior Python Role"
-                                    className="w-full px-4 py-3 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                    required
+                                    placeholder="Discussion about Project"
+                                    className="w-full px-5 py-4 rounded-2xl border border-border bg-muted/30 focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-semibold">Message</label>
+                                <label htmlFor="message" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Message</label>
                                 <textarea
                                     id="message"
+                                    name="message"
                                     rows={4}
-                                    placeholder="I'd like to discuss a potential project..."
-                                    className="w-full px-4 py-3 rounded-xl border border-border bg-muted/20 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
+                                    required
+                                    placeholder="Let's build something amazing..."
+                                    className="w-full px-5 py-4 rounded-2xl border border-border bg-muted/30 focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all font-medium resize-none text-base"
                                 />
                             </div>
                             <button
                                 type="submit"
-                                className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all hover:scale-[1.02]"
+                                className="w-full py-5 rounded-2xl bg-primary text-primary-foreground font-black text-lg flex items-center justify-center gap-3 hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 hover:-translate-y-1 active:scale-95 group"
                             >
-                                <Send size={18} />
+                                <Send size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                 Send Message
                             </button>
                         </form>
