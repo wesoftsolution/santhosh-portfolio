@@ -99,7 +99,7 @@ export default function ResumePage() {
                     <div className="hidden print:block w-full text-left bg-white text-black p-10">
                         <h1 className="text-4xl font-bold border-b-2 border-black pb-4 mb-6">Santhosh Sugumar</h1>
                         <p className="text-xl mb-2 font-semibold text-gray-700">Senior Python Developer | ETL Specialist</p>
-                        <p className="mb-8 text-gray-600">santhoshsugumar_84@yahoo.com | +91 86670 25228 | Chidambaram, India</p>
+                        <p className="mb-8 text-gray-600">santhoshsugumar_84@yahoo.com | +91 86670 25228 | Maraimalainagar, Chennai, India</p>
 
                         <h2 className="text-2xl font-bold uppercase tracking-wider border-b-2 border-gray-300 mb-4">Professional Summary</h2>
                         <p className="mb-8 leading-relaxed">
